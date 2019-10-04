@@ -32,5 +32,18 @@
 			<li><a href="login.php"><i class="fa fa-sign-in"></i>Login</a></li>
 		</ul>
 	</div>
+	<div id="container">
+		<div id="div1">
+			<select name="Danh Muc" id="DanhMuc">
+				<option value="">Danh mục sản phẩm</option>
+				<option value="">Màn hình</option>
+				<option value="">Thiết kế</option>
+				<option value="">Camera</option>
+				<option value="">Chuột</option>
+				<option value="">Phần mềm</option>
+
+			</select>
+		</div>
+	</div>
 </body>
 </html>

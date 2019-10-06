@@ -14,7 +14,7 @@
 			<li><a href="accessories.php"><i class="fa fa-clone"></i>Accessories</a>
 			<div class="sub-menu-1">
 					<ul>
-						<li><a href="">Mouse</a></li>
+						<li><a href="">Mouse<i class="fa fa-home"></i></a></li>
 						<li><a href="">Screen</a></li>
 						<li><a href="">KeyBoard</a></li>
 						<li><a href="">RAM</a></li>

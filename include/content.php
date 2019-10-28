@@ -31,6 +31,7 @@
 	<div class="row content">
 	<div class="col-md-3 nav">
 		<div class="nav-bar">
+			<h3>Danh mục</h3>
 			<ul class="">
 		    	<li class="nav-item">
 		    		<a class="" href="#"><i class="fa fa-clone"></i>Macbook Pro Retina</a>

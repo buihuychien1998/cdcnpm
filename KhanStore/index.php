@@ -1,8 +1,11 @@
 <?php
+require "dbConnect.php";
+include "action.php";
+$db = new dbConnect();
 session_start();
-// if(isset($_SESSION["uid"])){
-// 	header("location:profile.php");
-// }
+if(isset($_SESSION["uid"])){
+	header("location:profile.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,8 +15,9 @@ session_start();
 		<link rel="stylesheet" href="css/bootstrap.min.css"/>
 		<script src="js/jquery2.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="main.js"></script>
+		<!-- <script src="main.js"></script> -->
 		<link rel="stylesheet" type="text/css" href="style.css">
+		
 		<style></style>
 	</head>
 <body>
@@ -36,11 +40,11 @@ session_start();
 				<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
 				<li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
 			</ul>
-			<form class="navbar-form navbar-left">
+			<form method="POST" class="navbar-form navbar-left">
 		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Search" id="search">
+		          <input type="text" name="keyword" class="form-control" placeholder="Search" id="search">
 		        </div>
-		        <button type="submit" class="btn btn-primary" id="search_btn"><span class="glyphicon glyphicon-search"></span></button>
+		        <button type="submit" name="search" class="btn btn-primary" id="search_btn"><span class="glyphicon glyphicon-search"></span></button>
 		     </form>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart<span class="badge">0</span></a>
@@ -102,24 +106,9 @@ session_start();
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-2 col-xs-12">
-				<!-- div id="get_category">
-				</div> -->
-				<!--<div class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#"><h4>Categories</h4></a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-				</div> -->
 				<div id="get_brand">
+					<?php getBrand($db); ?>
 				</div>
-				<!--<div class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#"><h4>Brand</h4></a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-				</div> -->
 			</div>
 			<div class="col-md-8 col-xs-12">
 				<div class="row">
@@ -131,25 +120,43 @@ session_start();
 					<div class="panel-body">
 						<div id="get_product">
 							<!--Here we get product jquery Ajax Request-->
+
+							<?php 
+							if (!isset($_POST["search"])) {
+								$currentPage = isset($_GET["page"]) ? $_GET["page"] : 0; 
+								$selected_brand = isset($_GET["bid"]) ? $_GET["bid"] : "";
+								getProduct($db, $selected_brand, $currentPage);
+							}else{
+								$selected_brand = "";
+								search($db);
+							
+							}
+								?>
+							
 						</div>
-						<!--<div class="col-md-4">
-							<div class="panel panel-info">
-								<div class="panel-heading">Samsung Galaxy</div>
-								<div class="panel-body">
-									<img src="product_images/images.JPG"/>
-								</div>
-								<div class="panel-heading">$.500.00
-									<button style="float:right;" class="btn btn-danger btn-xs">AddToCart</button>
-								</div>
-							</div>
-						</div> -->
 					</div>
+
 					<div class="panel-footer">&copy; 2019</div>
 				</div>
 			</div>
-			<div class="col-md-1"></div>
+			
 		</div>
 	</div>
+	<div class="row">
+			<div class="col-md-12">
+				<center>
+					<ul class="pagination">
+
+						<?php
+							if (!$selected_brand || !!empty($selected_brand)) {
+								pagination($db);
+							}
+							?>
+					</ul>
+				</center>
+			</div>
+		</div>
+
 </body>
 </html>
 

@@ -53,3 +53,8 @@
 }
 
 /* --------- CSS Loader End Here ------------*/
+
+.detailProduct{
+	text-decoration: none;
+	color: red;
+}

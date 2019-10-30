@@ -80,7 +80,10 @@ session_start();
 										<label for="email">Password</label>
 										<input type="password" class="form-control" name="password" id="password" required/>
 										<p><br/></p>
-										<a href="#" style="color:white; list-style:none;">Forgotten Password</a><input type="submit" class="btn btn-success" style="float:right;">
+										<a href="#" style="color:white; list-style:none;">Forgotten Password?</a>
+										<br/>
+										<div style="color:#CCCCCC;">Don't have account? <a href="customer_registration.php" style="color:white; list-style:none;">Register</a></div>
+										<input type="submit" class="btn btn-success" style="float:right;">
 									</form>
 								</div>
 								<div class="panel-footer" id="e_msg"></div>

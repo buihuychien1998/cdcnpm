@@ -1,8 +1,9 @@
-<?php
-if (isset($_GET["register"])) {
-	
-	?>
 
+<?php
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -111,12 +112,7 @@ if (isset($_GET["register"])) {
 	</div>
 </body>
 </html>
-	<?php
-}
 
-
-
-?>
 
 
 

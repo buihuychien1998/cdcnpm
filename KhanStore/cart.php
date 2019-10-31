@@ -1,6 +1,18 @@
 <?php
+require "dbConnect.php";
+require "action.php";
 
-
+$db = new dbConnect();
+$ip_add = getenv("REMOTE_ADDR");
+if (isset($_POST["removeItemFromCart"])) {
+	removeItemFromCart($db, $ip_add);
+}
+if (isset($_POST["updateCartItem"])) {
+	updateCartItem($db, $ip_add);
+}
+if (isset($_POST['login_user_with_product'])) {
+	header("location:login_form.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +22,6 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css"/>
 		<script src="js/jquery2.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="main.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css"/>
 	</head>
 <body>
@@ -26,7 +37,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="#" class="navbar-brand">Khan Store</a>
+				<a href="#" class="navbar-brand">Laptop Store</a>
 			</div>
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
@@ -59,27 +70,11 @@
 							<div class="col-md-2 col-xs-2"><b>Product Name</b></div>
 							<div class="col-md-2 col-xs-2"><b>Quantity</b></div>
 							<div class="col-md-2 col-xs-2"><b>Product Price</b></div>
-							<div class="col-md-2 col-xs-2"><b>Price in $</b></div>
 						</div>
-						<div id="cart_checkout"></div>
-						<!--<div class="row">
-							<div class="col-md-2">
-								<div class="btn-group">
-									<a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-									<a href="" class="btn btn-primary"><span class="glyphicon glyphicon-ok-sign"></span></a>
-								</div>
-							</div>
-							<div class="col-md-2"><img src='product_images/imges.jpg'></div>
-							<div class="col-md-2">Product Name</div>
-							<div class="col-md-2"><input type='text' class='form-control' value='1' ></div>
-							<div class="col-md-2"><input type='text' class='form-control' value='5000' disabled></div>
-							<div class="col-md-2"><input type='text' class='form-control' value='5000' disabled></div>
-						</div> -->
-						<!--<div class="row">
-							<div class="col-md-8"></div>
-							<div class="col-md-4">
-								<b>Total $500000</b>
-							</div> -->
+						<div id="cart_checkout">
+						</div>
+						<?php checkOutDetails($db, $ip_add) ?>
+							
 						</div> 
 					</div>
 					<div class="panel-footer"></div>

@@ -1,8 +1,9 @@
 <?php 
-require("include/header.php"); 
+require_once("include/header.php"); 
 $pid =$_GET["pid"]; 
 if(isset($_POST["addToCart"])){
 	addToCart($db, $pid, $ip_add);
+	// header("location:detailproduct.php");
 } 
 ?>
 

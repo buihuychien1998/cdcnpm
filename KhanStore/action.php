@@ -128,7 +128,7 @@ function addToCart($db, $p_id, $ip_add){
 						</div>
 					");
 				}
-		}
+			}
 		}else{
 			$sql = "SELECT id FROM cart WHERE ip_add = '$ip_add' AND p_id = '$p_id' AND user_id = -1";
 			$query = mysqli_query($db->getConn(),$sql);
@@ -138,19 +138,18 @@ function addToCart($db, $p_id, $ip_add){
 							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
 							<b>Product is already added into the cart Continue Shopping..!</b>
 					</div>");
-					exit();
-			}
-			$sql = "INSERT INTO `cart`
-			(`p_id`, `ip_add`, `user_id`, `qty`) 
-			VALUES ('$p_id','$ip_add','-1','1')";
-			if (mysqli_query($db->getConn(),$sql)) {
-				echo("
-					<div class='alert alert-success'>
-						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Your product is Added Successfully..!</b>
-					</div>
-				");
-				exit();
+			}else{
+				$sql = "INSERT INTO `cart`
+				(`p_id`, `ip_add`, `user_id`, `qty`) 
+				VALUES ('$p_id','$ip_add','-1','1')";
+				if (mysqli_query($db->getConn(),$sql)) {
+					echo("
+						<div class='alert alert-success'>
+							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+							<b>Your product is Added Successfully..!</b>
+						</div>
+					");
+				}
 			}
 			
 		}

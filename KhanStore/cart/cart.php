@@ -1,6 +1,6 @@
 <?php
-require "dbConnect.php";
-require "action.php";
+require "../connect_db/dbConnect.php";
+require "../action.php";
 
 $db = new dbConnect();
 $ip_add = getenv("REMOTE_ADDR");
@@ -19,10 +19,10 @@ if (isset($_POST['login_user_with_product'])) {
 	<head>
 		<meta charset="UTF-8">
 		<title>Khan Store</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css"/>
-		<script src="js/jquery2.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<script src="../js/jquery2.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
 	</head>
 <body>
 <div class="wait overlay">
@@ -37,12 +37,12 @@ if (isset($_POST['login_user_with_product'])) {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="#" class="navbar-brand">Laptop Store</a>
+				<a href="../main/index.php" class="navbar-brand">Laptop Store</a>
 			</div>
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
+				<li><a href="../main/index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+				<li><a href="../main/index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
 			</ul>
 		</div>
 	</div>

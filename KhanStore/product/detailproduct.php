@@ -1,5 +1,5 @@
 <?php 
-require_once("include/header.php"); 
+require_once("../include/header.php"); 
 $pid = $_GET["pid"]; 
  
 if(isset($_POST["addToCart"])){
@@ -17,11 +17,11 @@ if(isset($_POST["addToCart"])){
 	        	<hr>
 	        	<span style = "color:#757575">Liên hệ: </span>
 	        	<div class="icon">
-					<img src="images/facebook.png" class="cat_icon" />
-					<img src="images/twitter.png" class="cat_icon" />
-					<img src="images/vimeo.png" class="cat_icon" />
-					<img src="images/flickr.png" class="cat_icon" />
-					<img src="images/rss.png" class="cat_icon" />
+					<img src="../images/facebook.png" class="cat_icon" />
+					<img src="../images/twitter.png" class="cat_icon" />
+					<img src="../images/vimeo.png" class="cat_icon" />
+					<img src="../images/flickr.png" class="cat_icon" />
+					<img src="../images/rss.png" class="cat_icon" />
 	        	</div>
         	</form>
         </div>

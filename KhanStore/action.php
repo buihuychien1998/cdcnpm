@@ -51,11 +51,11 @@ function printProduct($db, $query){
 			$pro_image = $row['product_image'];
 			echo ("
 				<div class='col-md-4'>
-				<a href='detailproduct.php?pid=$pro_id' class='detailProduct'>
+				<a href='../product/detailproduct.php?pid=$pro_id' class='detailProduct'>
 							<div class='panel panel-info'>
 								<div class='panel-heading'>$pro_title</div>
 								<div class='panel-body'>
-									<img src='product_images/$pro_image' style='width:160px; height:250px;'/>
+									<img src='../product_images/$pro_image' style='width:160px; height:250px;'/>
 								</div>
 								<div class='panel-heading'>$.$pro_price.00</div>
 							</div>
@@ -87,7 +87,7 @@ function getDetailProduct($db, $pid){
 			echo ("
 				<form method='POST'>
 					<div class=\"left\">
-		        		<img src=\"product_images/$pro_image\" alt=\"product_image\" style='width: 200px; height:250px'/>
+		        		<img src=\"../product_images/$pro_image\" alt=\"product_image\" style='width: 200px; height:250px'/>
 		        	</div>
 
 			        <div class=\"center\">
@@ -122,14 +122,14 @@ function addToCart($db, $p_id, $ip_add){
 				VALUES ('$p_id','$ip_add','$user_id','1')";
 				if(mysqli_query($con,$sql)){
 					
-					// echo("
-					// 	<div class='alert alert-success'>
-					// 		<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-					// 		<b>Product is Added..!</b>
-					// 	</div>
-					// ");
-					echo "<script type='text/javascript'>window.top.location='http://localhost:8080/BTLPHP/cdcnpm/KhanStore/detailproduct.php?pid=$p_id';</script>";  
-					echo "<script type='text/javascript'>alert('Product is Added..!');</script>";
+					echo("<script type='text/javascript'>window.top.location='http://localhost:8080/BTLPHP/cdcnpm/KhanStore/product/detailproduct.php?pid=$p_id';</script>"); 
+					echo("
+						<div class='alert alert-success'>
+							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+							<b>Product is Added..!</b>
+						</div>
+					");
+					// echo "<script type='text/javascript'>alert('Product is Added..!');</script>";
 				}
 			}
 		}else{
@@ -148,14 +148,15 @@ function addToCart($db, $p_id, $ip_add){
 				VALUES ('$p_id','$ip_add','-1','1')";
 				if (mysqli_query($db->getConn(),$sql)) {
 
-					// echo("
-					// 	<div class='alert alert-success'>
-					// 		<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-					// 		<b>Your product is Added Successfully..!</b>
-					// 	</div>
-					// ");
-					echo "<script type='text/javascript'>window.top.location='http://localhost:8080/BTLPHP/cdcnpm/KhanStore/detailproduct.php?pid=$p_id';</script>"; 
-					echo "<script type='text/javascript'>alert('Product is Added..!');</script>";
+					
+					echo("<script type='text/javascript'>window.top.location='http://localhost:8080/BTLPHP/cdcnpm/KhanStore/product/detailproduct.php?pid=$p_id';</script>"); 
+					// echo "<script type='text/javascript'>alert('Product is Added..!');</script>";
+					echo("
+						<div class='alert alert-success'>
+							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+							<b>Your product is Added Successfully..!</b>
+						</div>
+					");
 				}
 			}
 			
@@ -206,14 +207,14 @@ function getCart($db, $ip_add){
 			echo '
 				<div class="row">
 					<div class="col-md-3">'.$n.'</div>
-					<div class="col-md-3"><img class="img-responsive" src="product_images/'.$product_image.'" /></div>
+					<div class="col-md-3"><img class="img-responsive" src="../product_images/'.$product_image.'" /></div>
 					<div class="col-md-3">'.$product_title.'</div>
 					<div class="col-md-3">$'.$product_price.'</div>
 				</div>';
 			
 		}
 		?>
-			<a style="float:right;" href="cart.php" class="btn btn-warning">Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span></a>
+			<a style="float:right;" href="../cart/cart.php" class="btn btn-warning">Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span></a>
 		<?php
 	}
 }
@@ -250,7 +251,7 @@ function checkOutDetails($db, $ip_add){
 							</div>
 							<input type="hidden" name="product_id" value="'.$product_id.'"/>
 							<input type="hidden" name="" value="'.$cart_item_id.'"/>
-							<div class="col-md-2"><img class="img-responsive" src="product_images/'.$product_image.'"></div>
+							<div class="col-md-2"><img class="img-responsive" src="../product_images/'.$product_image.'"></div>
 							<div class="col-md-2">'.$product_title.'</div>
 							<div class="col-md-2"><input type="text" class="form-control qty" name = "quantity" value="'.$qty.'" ></div>
 							<div class="col-md-2"><input type="text" class="form-control price" value="'.$product_price.'" readonly="readonly"></div>
@@ -324,17 +325,25 @@ function removeItemFromCart($db, $ip_add){
 function updateCartItem($db, $ip_add){
 	$pid = $_POST["product_id"];
 	$qty = $_POST["quantity"];
-	if (isset($_SESSION["uid"])) {
+	if ($qty > 0) {
+		if (isset($_SESSION["uid"])) {
 		$sql = "UPDATE cart SET qty='$qty' WHERE p_id = '$pid' AND user_id = '$_SESSION[uid]'";
+		}else{
+			$sql = "UPDATE cart SET qty='$qty' WHERE p_id = '$pid' AND ip_add = '$ip_add'";
+		}
+		if(mysqli_query($db->getConn(),$sql)){
+			echo("<div class='alert alert-info'>
+							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+							<b>Product is updated</b>
+					</div>");
+		}
 	}else{
-		$sql = "UPDATE cart SET qty='$qty' WHERE p_id = '$pid' AND ip_add = '$ip_add'";
+		echo("<div class=\"alert alert-danger\">
+							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+							<b>Quantity is not valid</b>
+					</div>");
 	}
-	if(mysqli_query($db->getConn(),$sql)){
-		echo("<div class='alert alert-info'>
-						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Product is updated</b>
-				</div>");
-	}
+	
 }
 
 

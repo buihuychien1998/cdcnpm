@@ -1,11 +1,11 @@
 <?php
-require_once "dbConnect.php";
-include_once "action.php";
+require_once "../connect_db/dbConnect.php";
+include_once "../action.php";
 $db = new dbConnect();
-session_start();
-if(isset($_SESSION["uid"])){
-	header("location:profile.php");
-}
+// session_start();
+// if(isset($_SESSION["uid"])){
+// 	header("location:profile.php");
+// }
 $ip_add = getenv("REMOTE_ADDR");
 
 ?>
@@ -14,14 +14,18 @@ $ip_add = getenv("REMOTE_ADDR");
 	<head>
 		<meta charset="UTF-8">
 		<title>Khan Store</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css"/>
-		<script src="js/jquery2.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<script src="../js/jquery2.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
 		<!-- <script src="main.js"></script> -->
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="stylesheet" type="text/css" href="../detailproductStyle.css">
-		
-		<style></style>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" type="text/css" href="../css/detailproductStyle.css">
+		<style>
+			@media screen and (max-width:480px){
+				#search{width:80%;}
+				#search_btn{width:30%;float:right;margin-top:-32px;margin-right:10px;}
+			}
+		</style>
 	</head>
 <body>
 <div class="wait overlay">
@@ -40,8 +44,8 @@ $ip_add = getenv("REMOTE_ADDR");
 			</div>
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
+				<li><a href="../main/index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+				<li><a href="../main/index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
 			</ul>
 			<form method="POST" class="navbar-form navbar-left">
 		        <div class="form-group">
@@ -72,29 +76,51 @@ $ip_add = getenv("REMOTE_ADDR");
 						</div>
 					</div>
 				</li>
-				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>SignIn</a>
-					<ul class="dropdown-menu">
-						<div style="width:300px;">
-							<div class="panel panel-primary">
-								<div class="panel-heading">Login</div>
-								<div class="panel-heading">
-									<form onsubmit="return false" id="login">
-										<label for="email">Email</label>
-										<input type="email" class="form-control" name="email" id="email" required/>
-										<label for="email">Password</label>
-										<input type="password" class="form-control" name="password" id="password" required/>
-										<p><br/></p>
-										<a href="#" style="color:white; list-style:none;">Forgotten Password?</a>
-										<br/>
-										<div style="color:#CCCCCC;">Don't have account? <a href="customer_registration.php" style="color:white; list-style:none;">Register</a></div>
-										<input type="submit" class="btn btn-success" style="float:right;">
-									</form>
-								</div>
-								<div class="panel-footer" id="e_msg"></div>
-							</div>
-						</div>
-					</ul>
-				</li>
+				
+				<?php 
+					if (isset($_SESSION["uid"])) {
+						echo('
+							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><?php echo "Hi,".$_SESSION["name"]; ?></a>
+								<ul class="dropdown-menu">
+									<li><a href="cart.php" style="text-decoration:none; color:blue;"><span class="glyphicon glyphicon-shopping-cart">Cart</a></li>
+									<li class="divider"></li>
+									<li><a href="customer_order.php" style="text-decoration:none; color:blue;">Orders</a></li>
+									<li class="divider"></li>
+									<li><a href="" style="text-decoration:none; color:blue;">Chnage Password</a></li>
+									<li class="divider"></li>
+									<li><a href="logout.php" style="text-decoration:none; color:blue;">Logout</a></li>
+								</ul>
+					
+						</li>');
+					}else{
+						echo('
+							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>SignIn</a>
+								<ul class="dropdown-menu">
+									<div style="width:300px;">
+										<div class="panel panel-primary">
+											<div class="panel-heading">Login</div>
+											<div class="panel-heading">
+												<form onsubmit="return false" id="login">
+													<label for="email">Email</label>
+													<input type="email" class="form-control" name="email" id="email" required/>
+													<label for="email">Password</label>
+													<input type="password" class="form-control" name="password" id="password" required/>
+													<p><br/></p>
+													<a href="#" style="color:white; list-style:none;">Forgotten Password?</a>
+													<br/>
+													<div style="color:#CCCCCC;">Don\'t have account? <a href="customer_registration.php" style="color:white; list-style:none;">Register</a></div>
+													<input type="submit" class="btn btn-success" style="float:right;">
+												</form>
+											</div>
+											<div class="panel-footer" id="e_msg"></div>
+										</div>
+									</div>
+								</ul>
+					</li>
+					');
+					}
+				 ?>
+				
 			</ul>
 		</div>
 	</div>

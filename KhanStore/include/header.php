@@ -1,6 +1,6 @@
 <?php
-require "dbConnect.php";
-include "action.php";
+require_once "dbConnect.php";
+include_once "action.php";
 $db = new dbConnect();
 session_start();
 if(isset($_SESSION["uid"])){

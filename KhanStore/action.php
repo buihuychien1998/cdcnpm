@@ -121,18 +121,22 @@ function addToCart($db, $p_id, $ip_add){
 				(`p_id`, `ip_add`, `user_id`, `qty`) 
 				VALUES ('$p_id','$ip_add','$user_id','1')";
 				if(mysqli_query($con,$sql)){
-					echo("
-						<div class='alert alert-success'>
-							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-							<b>Product is Added..!</b>
-						</div>
-					");
+					
+					// echo("
+					// 	<div class='alert alert-success'>
+					// 		<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+					// 		<b>Product is Added..!</b>
+					// 	</div>
+					// ");
+					echo "<script type='text/javascript'>window.top.location='http://localhost:8080/BTLPHP/cdcnpm/KhanStore/detailproduct.php?pid=$p_id';</script>";  
+					echo "<script type='text/javascript'>alert('Product is Added..!');</script>";
 				}
 			}
 		}else{
 			$sql = "SELECT id FROM cart WHERE ip_add = '$ip_add' AND p_id = '$p_id' AND user_id = -1";
 			$query = mysqli_query($db->getConn(),$sql);
 			if (mysqli_num_rows($query) > 0) {
+				
 				echo("
 					<div class='alert alert-warning'>
 							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
@@ -143,12 +147,15 @@ function addToCart($db, $p_id, $ip_add){
 				(`p_id`, `ip_add`, `user_id`, `qty`) 
 				VALUES ('$p_id','$ip_add','-1','1')";
 				if (mysqli_query($db->getConn(),$sql)) {
-					echo("
-						<div class='alert alert-success'>
-							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-							<b>Your product is Added Successfully..!</b>
-						</div>
-					");
+
+					// echo("
+					// 	<div class='alert alert-success'>
+					// 		<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+					// 		<b>Your product is Added Successfully..!</b>
+					// 	</div>
+					// ");
+					echo "<script type='text/javascript'>window.top.location='http://localhost:8080/BTLPHP/cdcnpm/KhanStore/detailproduct.php?pid=$p_id';</script>"; 
+					echo "<script type='text/javascript'>alert('Product is Added..!');</script>";
 				}
 			}
 			

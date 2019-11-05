@@ -120,9 +120,13 @@ function addToCart($db, $p_id, $ip_add){
 				$sql = "INSERT INTO `cart`
 				(`p_id`, `ip_add`, `user_id`, `qty`) 
 				VALUES ('$p_id','$ip_add','$user_id','1')";
-				if(mysqli_query($con,$sql)){
+				if(mysqli_query($db->getConn(),$sql)){
 					
+<<<<<<< HEAD
 					echo("<script type='text/javascript'>window.top.location='http://localhost:81/BTL_CNPM/cdcnpm/LapTopStore/product/detailproduct.php?pid=$p_id';</script>"); 
+=======
+					echo("<script type='text/javascript'>window.top.location='http://localhost:8080/BTLPHP/cdcnpm/LaptopStore/product/detailproduct.php?pid=$p_id';</script>"); 
+>>>>>>> 387c7a223c99ad937b3d7ddc9ab1cc47e505956f
 					echo("
 						<div class='alert alert-success'>
 							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
@@ -149,7 +153,11 @@ function addToCart($db, $p_id, $ip_add){
 				if (mysqli_query($db->getConn(),$sql)) {
 
 					
+<<<<<<< HEAD
 					echo("<script type='text/javascript'>window.top.location='http://localhost:81/BTL_CNPM/cdcnpm/LaptopStore/product/detailproduct.php?pid=$p_id';</script>"); 
+=======
+					echo("<script type='text/javascript'>window.top.location='http://localhost:8080/BTLPHP/cdcnpm/LaptopStore/product/detailproduct.php?pid=$p_id';</script>"); 
+>>>>>>> 387c7a223c99ad937b3d7ddc9ab1cc47e505956f
 					// echo "<script type='text/javascript'>alert('Product is Added..!');</script>";
 					echo("
 						<div class='alert alert-success'>

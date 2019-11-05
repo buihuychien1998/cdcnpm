@@ -6,6 +6,6 @@ unset($_SESSION["uid"]);
 
 unset($_SESSION["name"]);
 
-header("location:index.php");
+header("location:../main/index.php");
 
 ?>

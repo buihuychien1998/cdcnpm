@@ -24,6 +24,7 @@ include "login.php";
 		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
 		<script src="../js/jquery2.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
+		<script src="main.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 <body>
@@ -33,7 +34,7 @@ include "login.php";
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">	
 			<div class="navbar-header">
-				<a href="#" class="navbar-brand">Laptop Store</a>
+				<a href="#" class="navbar-brand">Khan Store</a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="../main/index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>

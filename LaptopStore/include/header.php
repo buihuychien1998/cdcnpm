@@ -1,9 +1,7 @@
 <?php
-require_once "../connect_db/dbConnect.php";
 include_once "../action.php";
-$db = new dbConnect();
+include "../account/login.php"
 // session_start();
-$ip_add = getenv("REMOTE_ADDR");
 
 ?>
 <!DOCTYPE html>
@@ -85,7 +83,7 @@ $ip_add = getenv("REMOTE_ADDR");
 									<li class="divider"></li>
 									<li><a href="" style="text-decoration:none; color:blue;">Chnage Password</a></li>
 									<li class="divider"></li>
-									<li><a href="logout.php" style="text-decoration:none; color:blue;">Logout</a></li>
+									<li><a href="../account/logout.php" style="text-decoration:none; color:blue;">Logout</a></li>
 								</ul>
 					
 						</li>');
@@ -97,7 +95,7 @@ $ip_add = getenv("REMOTE_ADDR");
 										<div class="panel panel-primary">
 											<div class="panel-heading">Login</div>
 											<div class="panel-heading">
-												<form onsubmit="return false" id="login">
+												<form id="login" method="POST">
 													<label for="email">Email</label>
 													<input type="email" class="form-control" name="email" id="email" required/>
 													<label for="email">Password</label>
@@ -106,7 +104,7 @@ $ip_add = getenv("REMOTE_ADDR");
 													<a href="#" style="color:white; list-style:none;">Forgotten Password?</a>
 													<br/>
 													<div style="color:#CCCCCC;">Don\'t have account? <a href="../account/customer_registration.php" style="color:white; list-style:none;">Register</a></div>
-													<input type="submit" class="btn btn-success" style="float:right;">
+													<input type="submit" name="login" class="btn btn-success" style="float:right;">
 												</form>
 											</div>
 											<div class="panel-footer" id="e_msg"></div>

@@ -1,5 +1,6 @@
 <?php
-include "db.php";
+include "../connect_db/dbConnect.php";
+$db=new dbConnect();
 
 session_start();
 
@@ -7,10 +8,10 @@ session_start();
 #If user given credential matches successfully with the data available in database then we will echo string login_success
 #login_success string will go back to called Anonymous funtion $("#login").click() 
 if(isset($_POST["email"]) && isset($_POST["password"])){
-	$email = mysqli_real_escape_string($con,$_POST["email"]);
+	$email = mysqli_real_escape_string($db->getConn(),$_POST["email"]);
 	$password = md5($_POST["password"]);
 	$sql = "SELECT * FROM user_info WHERE email = '$email' AND password = '$password'";
-	$run_query = mysqli_query($con,$sql);
+	$run_query = mysqli_query($db->getConn(),$sql);
 	$count = mysqli_num_rows($run_query);
 	//if user record is available in database then $count will be equal to 1
 	if($count == 1){

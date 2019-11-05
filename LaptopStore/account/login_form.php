@@ -2,7 +2,7 @@
 #this is Login form page , if user is already logged in then we will not allow user to access this page by executing isset($_SESSION["uid"])
 #if below statment return true then we will send user to their profile.php page
 if (isset($_SESSION["uid"])) {
-	header("location:index.php");
+	header("location:profile.php");
 }
 //in action.php page if user click on "ready to checkout" button that time we will pass data in a form from action.php page
 if (isset($_POST["login_user_with_product"])) {
@@ -23,6 +23,7 @@ if (isset($_POST["login_user_with_product"])) {
 		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
 		<script src="../js/jquery2.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
+		<script src="main.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 <body>
@@ -32,11 +33,11 @@ if (isset($_POST["login_user_with_product"])) {
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">	
 			<div class="navbar-header">
-				<a href="#" class="navbar-brand">Laptop Store</a>
+				<a href="#" class="navbar-brand">Khan Store</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="../main/index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="../main/index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
+				<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+				<li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
 			</ul>
 		</div>
 	</div>
@@ -64,7 +65,8 @@ if (isset($_POST["login_user_with_product"])) {
 							<label for="email">Password</label>
 							<input type="password" class="form-control" name="password" id="password" required/>
 							<p><br/></p>
-							<a href="#" style="color:#333; list-style:none;">Forgotten Password</a><input type="submit" class="btn btn-success" style="float:right;" Value="Login">
+							<a href="#" style="color:#333; list-style:none;">Forgotten Password</a>
+							<input type="submit" class="btn btn-success" style="float:right;" Value="Login">
 							<!--If user dont have an account then he/she will click on create account button-->
 							<div><a href="customer_registration.php?register=1">Create a new account?</a></div>						
 						</form>

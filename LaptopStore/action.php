@@ -1,5 +1,4 @@
 <?php
-session_start();
 function pagination($db){
 	$product_query = "SELECT * FROM products";
 	$run_query = mysqli_query($db->getConn(),$product_query);
@@ -51,17 +50,17 @@ function printProduct($db, $query){
 			$pro_price = $row['product_price'];
 			$pro_image = $row['product_image'];
 			echo ("
-				<div class='col-md-4'>
-				<a href='../product/detailproduct.php?pid=$pro_id' class='detailProduct'>
-							<div class='panel panel-info'>
-								<div class='panel-heading'>$pro_title</div>
-								<div class='panel-body'>
-									<img src='../product_images/$pro_image' style='width:160px; height:250px;'/>
+				<div class='col-md-4 detailProduct'>
+					<a href='../product/detailproduct.php?pid=$pro_id'>
+								<div class='panel panel-info subDetailProduct'>
+									<div class='panel-heading'>$pro_title</div>
+									<div class='panel-body'>
+										<img src='../product_images/$pro_image' style='width:160px; height:250px;'/>
+									</div>
+									<div class='panel-heading'>$.$pro_price.00</div>
 								</div>
-								<div class='panel-heading'>$.$pro_price.00</div>
-							</div>
-							</a>
-						</div>	
+					</a>
+				</div>	
 			");
 		}
 	}

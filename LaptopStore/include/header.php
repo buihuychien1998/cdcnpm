@@ -40,7 +40,9 @@ include "../account/login.php"
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="../main/index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="../main/index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-globe"></span>News</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-envelope"></span>Support</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-earphone"></span>Contact</a></li>
 			</ul>
 			<form method="POST" class="navbar-form navbar-left">
 		        <div class="form-group">
@@ -77,11 +79,11 @@ include "../account/login.php"
 						echo('
 							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><?php echo "Hi,".$_SESSION["name"]; ?></a>
 								<ul class="dropdown-menu">
-									<li><a href="cart.php" style="text-decoration:none; color:blue;"><span class="glyphicon glyphicon-shopping-cart">Cart</a></li>
+									<li><a href="../cart/cart.php" style="text-decoration:none; color:blue;">Cart</a></li>
 									<li class="divider"></li>
 									<li><a href="customer_order.php" style="text-decoration:none; color:blue;">Orders</a></li>
 									<li class="divider"></li>
-									<li><a href="" style="text-decoration:none; color:blue;">Chnage Password</a></li>
+									<li><a href="" style="text-decoration:none; color:blue;">Change Password</a></li>
 									<li class="divider"></li>
 									<li><a href="../account/logout.php" style="text-decoration:none; color:blue;">Logout</a></li>
 								</ul>

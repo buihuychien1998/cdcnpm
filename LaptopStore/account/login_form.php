@@ -37,7 +37,9 @@ include "login.php";
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="../main/index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="../main/index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-globe"></span>News</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-envelope"></span>Support</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-earphone"></span>Contact</a></li>
 			</ul>
 		</div>
 	</div>

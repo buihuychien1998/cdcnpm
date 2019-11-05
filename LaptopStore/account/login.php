@@ -1,17 +1,9 @@
 <?php
 include "../connect_db/dbConnect.php";
-<<<<<<< HEAD
-$db=new dbConnect();
-
-session_start();
-
-#Login script is begin here
-=======
 $db = new dbConnect();
 $ip_add = getenv("REMOTE_ADDR");	
 if (isset($_POST['login'])) {
 	#Login script is begin here
->>>>>>> 387c7a223c99ad937b3d7ddc9ab1cc47e505956f
 #If user given credential matches successfully with the data available in database then we will echo string login_success
 #login_success string will go back to called Anonymous funtion $("#login").click() 
 if(isset($_POST["email"]) && isset($_POST["password"])){

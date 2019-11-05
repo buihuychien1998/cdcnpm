@@ -10,15 +10,18 @@ if (isset($_POST["removeItemFromCart"])) {
 if (isset($_POST["updateCartItem"])) {
 	updateCartItem($db, $ip_add);
 }
-if (isset($_POST['login_user_with_product'])) {
-	header("location:../account/login_form.php");
+if (!isset($_SESSION['uid'])) {
+	if (isset($_POST['login_user_with_product'])) {
+		header("location:../account/login_form.php");
+	}
 }
+
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Khan Store</title>
+		<title>Laptop Store</title>
 		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
 		<script src="../js/jquery2.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
@@ -75,7 +78,7 @@ if (isset($_POST['login_user_with_product'])) {
 						</div>
 						<div id="cart_checkout">
 						</div>
-						<?php checkOutDetails($db, $ip_add) ?>
+							<?php checkOutDetails($db, $ip_add) ?>
 							
 						</div> 
 					</div>

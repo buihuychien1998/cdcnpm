@@ -6,12 +6,11 @@ if(isset($_POST["addToCart"])){
 	addToCart($db, $pid, $ip_add);
 	// header("location:detailproduct.php?pid=$pid");
 } 
-	 
-
 ?>
-
  	<main class="main">
  		<div class="product">
+			<form method='POST'>
+
 	        	<?php getDetailProduct($db, $pid);?>
 	        	<input type="submit" name="addToCart" value="Mua Ngay" class="buy">
 	        	<hr>

@@ -11,7 +11,7 @@ if (isset($_POST["updateCartItem"])) {
 	updateCartItem($db, $ip_add);
 }
 if (isset($_POST['login_user_with_product'])) {
-	header("location:login_form.php");
+	header("location:../account/login_form.php");
 }
 ?>
 <!DOCTYPE html>

@@ -3,9 +3,6 @@ require_once "../connect_db/dbConnect.php";
 include_once "../action.php";
 $db = new dbConnect();
 // session_start();
-// if(isset($_SESSION["uid"])){
-// 	header("location:profile.php");
-// }
 $ip_add = getenv("REMOTE_ADDR");
 
 ?>
@@ -13,7 +10,7 @@ $ip_add = getenv("REMOTE_ADDR");
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Khan Store</title>
+		<title>Laptop Store</title>
 		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
 		<script src="../js/jquery2.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
@@ -40,7 +37,7 @@ $ip_add = getenv("REMOTE_ADDR");
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="index.php" class="navbar-brand">Laptop Store</a>
+				<a href="../main/index.php" class="navbar-brand">Laptop Store</a>
 			</div>
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
@@ -108,7 +105,7 @@ $ip_add = getenv("REMOTE_ADDR");
 													<p><br/></p>
 													<a href="#" style="color:white; list-style:none;">Forgotten Password?</a>
 													<br/>
-													<div style="color:#CCCCCC;">Don\'t have account? <a href="customer_registration.php" style="color:white; list-style:none;">Register</a></div>
+													<div style="color:#CCCCCC;">Don\'t have account? <a href="../account/customer_registration.php" style="color:white; list-style:none;">Register</a></div>
 													<input type="submit" class="btn btn-success" style="float:right;">
 												</form>
 											</div>

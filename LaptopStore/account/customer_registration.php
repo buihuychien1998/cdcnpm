@@ -8,12 +8,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Khan Store</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css"/>
-		<script src="js/jquery2.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="main.js"></script>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<title>Laptop Store</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<script src="../js/jquery2.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 <body>
 <div class="wait overlay">
@@ -25,8 +24,8 @@
 				<a href="#" class="navbar-brand">Khan Store</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
+				<li><a href="../main/index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+				<li><a href="../main/index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
 			</ul>
 		</div>
 	</div>

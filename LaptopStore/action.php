@@ -35,8 +35,9 @@ function getProduct($db, $bid, $page)
 	}else{
 		$start = 0;
 	}
+	$limited = ($bid == null || $bid == "") ? "LIMIT $start,$limit" : "";
 	$condition = ($bid == null || $bid == "") ? "1" : "product_brand = $bid";
-	$product_query = "SELECT * FROM products WHERE $condition LIMIT $start,$limit";
+	$product_query = "SELECT * FROM products WHERE $condition ".$limited;
 	printProduct($db, $product_query);
 }
 function printProduct($db, $query){
@@ -85,7 +86,6 @@ function getDetailProduct($db, $pid){
 			$pro_desc = $row['product_desc'];
 			$pro_image = $row['product_image'];
 			echo ("
-				<form method='POST'>
 					<div class=\"left\">
 		        		<img src=\"../product_images/$pro_image\" alt=\"product_image\" style='width: 200px; height:250px'/>
 		        	</div>

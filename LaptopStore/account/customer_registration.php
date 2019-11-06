@@ -1,8 +1,6 @@
 
 <?php
-
-
-
+	include 'register.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +19,7 @@
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">	
 			<div class="navbar-header">
-				<a href="#" class="navbar-brand">Khan Store</a>
+				<a href="#" class="navbar-brand">Laptop Store</a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="../main/index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
@@ -49,7 +47,7 @@
 					<div class="panel-heading">Customer SignUp Form</div>
 					<div class="panel-body">
 					
-					<form id="signup_form" onsubmit="return false">
+					<form id="signup_form" method="POST">
 						<div class="row">
 							<div class="col-md-6">
 								<label for="f_name">First Name</label>

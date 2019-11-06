@@ -1,7 +1,9 @@
 <?php
+include "../connect_db/dbConnect.php";
+$db = new dbConnect();
 session_start();
-include "db.php";
-if (isset($_POST["f_name"])) {
+if (isset($_POST['signup_button'])) {
+	if (isset($_POST["f_name"])) {
 
 	$f_name = $_POST["f_name"];
 	$l_name = $_POST["l_name"];
@@ -98,7 +100,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 	}
 	//existing email address in our database
 	$sql = "SELECT user_id FROM user_info WHERE email = '$email' LIMIT 1" ;
-	$check_query = mysqli_query($con,$sql);
+	$check_query = mysqli_query($db->getConn(),$sql);
 	$count_email = mysqli_num_rows($check_query);
 	if($count_email > 0){
 		echo "
@@ -115,19 +117,22 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		`password`, `mobile`, `address1`, `address2`) 
 		VALUES (NULL, '$f_name', '$l_name', '$email', 
 		'$password', '$mobile', '$address1', '$address2')";
-		$run_query = mysqli_query($con,$sql);
-		$_SESSION["uid"] = mysqli_insert_id($con);
+		$run_query = mysqli_query($db->getConn(),$sql);
+		$_SESSION["uid"] = mysqli_insert_id($db->getConn());
 		$_SESSION["name"] = $f_name;
 		$ip_add = getenv("REMOTE_ADDR");
 		$sql = "UPDATE cart SET user_id = '$_SESSION[uid]' WHERE ip_add='$ip_add' AND user_id = -1";
-		if(mysqli_query($con,$sql)){
-			echo "register_success";
-			exit();
+		if(mysqli_query($db->getConn(),$sql)){
+			header("location:../main/index.php");
+			// echo("<script type='text/javascript'>window.top.location='http://localhost:86/LapTop/cdcnpm/LaptopStore/main/index.php';</script>"); 
+			
 		}
 	}
 	}
 	
 }
+}
+
 
 
 

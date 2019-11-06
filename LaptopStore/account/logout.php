@@ -8,4 +8,6 @@ unset($_SESSION["name"]);
 
 header("location:../main/index.php");
 
+session_destroy();
+
 ?>

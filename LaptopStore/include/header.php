@@ -1,8 +1,6 @@
 <?php
 include_once "../action.php";
-include "../account/login.php"
-// session_start();
-
+include "../account/login.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,7 +75,7 @@ include "../account/login.php"
 				<?php 
 					if (isset($_SESSION["uid"])) {
 						echo('
-							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><?php echo "Hi,".$_SESSION["name"]; ?></a>
+							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi, ' .$_SESSION["name"].'</a>
 								<ul class="dropdown-menu">
 									<li><a href="../cart/cart.php" style="text-decoration:none; color:blue;">Cart</a></li>
 									<li class="divider"></li>

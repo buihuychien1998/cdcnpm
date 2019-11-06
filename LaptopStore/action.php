@@ -1,5 +1,4 @@
 <?php
-session_start();
 function pagination($db){
 	$product_query = "SELECT * FROM products";
 	$run_query = mysqli_query($db->getConn(),$product_query);

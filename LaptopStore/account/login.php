@@ -40,14 +40,9 @@ if (isset($_POST['login'])) {
 					}
 					//here we are destroying user cookie
 					setcookie("product_list","",strtotime("-1 day"),"/");
-					//if user is logging from after cart page we will send cart_login
-					// echo "cart_login";
-					// exit();
 					
 				}
-				//if user is login from page we will send login_success
-				// echo "login_success";
-				// exit();
+			
 			}else{
 				echo "<span style='color:red;'>Please register before login..!</span>";
 				exit();

@@ -1,8 +1,6 @@
 <?php
 include_once "../action.php";
-include "../account/login.php"
-// session_start();
-
+include "../account/login.php";
 ?>
 <!DOCTYPE html>
 <html>

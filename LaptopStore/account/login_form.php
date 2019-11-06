@@ -1,6 +1,8 @@
 <?php
 #this is Login form page , if user is already logged in then we will not allow user to access this page by executing isset($_SESSION["uid"])
 #if below statment return true then we will send user to their profile.php page
+include "login.php";
+
 if (isset($_SESSION["uid"])) {
 	header("location:../main/index.php");
 }
@@ -14,7 +16,6 @@ if (isset($_POST["login_user_with_product"])) {
 	setcookie("product_list",$json_e,strtotime("+1 day"),"/","","",TRUE);
 
 }
-include "login.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -69,7 +70,7 @@ include "login.php";
 							<input type="password" class="form-control" name="password" id="password" required/>
 							<p><br/></p>
 							<a href="#" style="color:#333; list-style:none;">Forgotten Password</a>
-							<input type="submit" name = "login"class="btn btn-success" style="float:right;" Value="Login">
+							<input type="submit" name = "login" class="btn btn-success" style="float:right;" Value="Login">
 							<!--If user dont have an account then he/she will click on create account button-->
 							<div><a href="customer_registration.php?register=1">Create a new account?</a></div>						
 						</form>
